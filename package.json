@@ -7,8 +7,8 @@
   "license": "MIT",
   "scripts": {
     "test": "jest",
-    "build": "webpack -p",
-    "build:dev": "webpack --devtool source-map",
+    "build": "webpack -p --env production",
+    "build:dev": "webpack --env development --devtool source-map",
     "start": "node dist/backend.js"
   },
   "devDependencies": {
