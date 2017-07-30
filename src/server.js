@@ -31,6 +31,7 @@ const Server = (db, secret) => {
           user,
           db,
         },
+        graphiql: true,
       }
     })
   )
