@@ -4,6 +4,7 @@ services:
     environment:
       - ARANGODB_PASSWORD
       - ARANGODB_USERNAME
+      - SPOTHIRE_SHARED_SECRET
     ports:
       - 3000:3000
     image: spothire/server

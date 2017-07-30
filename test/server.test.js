@@ -1,5 +1,18 @@
 import request from 'supertest'
-import server from '../src/server'
+import Server from '../src/server'
+
+let userMock = jest
+  .fn()
+  .mockReturnValueOnce({ email: 'mike@korora.ca', name: 'mike' })
+
+const secret = 'secret'
+
+const server = Server(
+  {
+    getUserByEmail: userMock,
+  },
+  secret
+)
 
 describe('Server', () => {
   it('serves the / route', async () => {

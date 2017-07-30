@@ -1,11 +1,10 @@
-import graphqlHTTP from 'express-graphql'
-import schema from './src/schema'
 import { Database } from 'arangojs'
 import Connection from './src/database'
-import server from './src/server'
+import Server from './src/server'
 
 const username = process.env.ARANGODB_USERNAME
 const password = process.env.ARANGODB_PASSWORD
+const sharedSecret = process.env.SPOTHIRE_SHARED_SECRET
 
 const db = Connection(
   new Database({
@@ -14,13 +13,6 @@ const db = Connection(
   })
 )
 
-server.use(
-  '/graphql',
-  graphqlHTTP({
-    schema,
-    context: { db },
-    graphiql: true,
-  })
-)
+const server = Server(db, sharedSecret)
 
 server.listen(3000)

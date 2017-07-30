@@ -10,6 +10,13 @@ import {
 } from 'graphql'
 import User from './types/User'
 
+const authenticate = resolver => (source, args, context, info) => {
+  if (context.user) {
+    return resolver(source, args, context, info)
+  }
+  throw new Error('User is not authenticated')
+}
+
 var query = new GraphQLObjectType({
   name: 'Query',
   fields: {
@@ -21,9 +28,9 @@ var query = new GraphQLObjectType({
         },
       },
       type: User,
-      resolve: (source, args, { db }, info) => {
-        return db.getUserByEmail(args.email)
-      },
+      resolve: authenticate((source, args, { db, user }, info) => {
+        return user
+      }),
     },
   },
 })
