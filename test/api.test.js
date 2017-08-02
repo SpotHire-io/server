@@ -4,23 +4,11 @@ import jwt from 'jsonwebtoken'
 import { Database } from 'arangojs'
 import Connection from '../src/database'
 import Server from '../src/server'
-
-// About the ugliness:
-// Since Jest runs tests in parallel, each file needs to create it's own db,
-// otherwise test data from one test clobbers test data in another. The result
-// nondeterministic tests and general unhappiness.
-// TODO: This will need to be cleaned up and most likely shared across tests.
+import people from './data/people'
+import { getFilenameFromPath, dbNameFromFile } from './helpers'
 
 const username = process.env.ARANGODB_USERNAME
 const password = process.env.ARANGODB_PASSWORD
-
-function getFilenameFromPath(path) {
-  return path.split('/').slice(-1).join()
-}
-
-function dbNameFromFile(filename) {
-  return getFilenameFromPath(filename).replace(/\./g, '_') + '_' + Date.now()
-}
 
 const secret = 'secret'
 const url = `http://${username}:${password}@arangodb:8529`
@@ -95,32 +83,49 @@ describe('GraphQL API', () => {
   })
 
   describe('with an auth token', () => {
-    let token
+    let token, person, annie
 
     beforeEach(async () => {
-      token = jwt.sign(
-        { secret, aud: 'clientid', name: 'mike', email: 'mike@korora.ca' },
-        secret,
-        { expiresIn: 60 }
-      )
+      let [person, ..._] = people
+      annie = person
+      token = jwt.sign({ secret, aud: 'clientid', ...annie }, secret, {
+        expiresIn: 60,
+      })
     })
 
     describe('user(email: "a@b.c")', () => {
       it('finds a user by email', async () => {
-        await usersCollection.save(user)
+        await usersCollection.save(annie)
 
         let response = await request(server)
           .post('/graphql')
           .set('Authorization', 'Bearer ' + token)
           .set('Content-Type', 'application/graphql; charset=utf-8').send(`
             query {
-              mike:user(email: "mike@korora.ca") {
-                email
+              user(email: "acampbell0@cnbc.com") {
+                firstName
               }
             }
         `)
         let { data } = response.body
-        expect(data.mike.email).toEqual('mike@korora.ca')
+        expect(data.user.firstName).toEqual('Annie')
+      })
+
+      it('gives the users phone number', async () => {
+        await usersCollection.save(annie)
+
+        let response = await request(server)
+          .post('/graphql')
+          .set('Authorization', 'Bearer ' + token)
+          .set('Content-Type', 'application/graphql; charset=utf-8').send(`
+            query {
+              user(email: "acampbell0@cnbc.com") {
+                phone
+              }
+            }
+        `)
+        let { data } = response.body
+        expect(data.user.phone).toEqual('63-(954)154-1049')
       })
     })
   })

@@ -28,6 +28,7 @@
   "dependencies": {
     "apollo-client": "^1.8.0",
     "arangojs": "^5.7.0",
+    "babel-plugin-transform-object-rest-spread": "^6.23.0",
     "express": "^4.15.3",
     "express-graphql": "^0.6.6",
     "express-jwt": "^5.3.0",
