@@ -11,6 +11,16 @@ const Connection = connection => {
       let results = await connection.query(query)
       return results.next()
     },
+    saveUser: async user => {
+      let query = aql`
+        UPSERT {email: ${user.email} }
+          INSERT ${user}
+          UPDATE ${user} IN users
+          RETURN NEW
+      `
+      let results = await connection.query(query)
+      return results.next()
+    },
   }
 }
 

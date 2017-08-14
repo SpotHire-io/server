@@ -23,6 +23,14 @@ const User = new GraphQLObjectType({
       type: GraphQLString,
       description: 'the users phone number'
     },
+    emergencyContactInformation: {
+      type: GraphQLString,
+      description: 'the users phone number'
+    },
+    imageSrc: {
+      type: GraphQLString,
+      description: 'the users phone number'
+    },
   })
 })
 
