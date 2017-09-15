@@ -1,10 +1,17 @@
-import request from 'supertest'
-import graphqlHTTP from 'express-graphql'
-import jwt from 'jsonwebtoken'
-import { Database } from 'arangojs'
-import Connection from '../src/database'
-import Server from '../src/server'
-import { getFilenameFromPath, dbNameFromFile } from './helpers'
+const request = require('supertest')
+const graphqlHTTP = require('express-graphql')
+const jwt = require('jsonwebtoken')
+const { Database } = require('arangojs')
+const Connection = require('../src/database').default
+const Server = require('../src/server').default
+
+const getFilenameFromPath = function(path) {
+  return path.split('/').slice(-1).join()
+}
+
+const dbNameFromFile = function(filename) {
+  return getFilenameFromPath(filename).replace(/\./g, '_') + '_' + Date.now()
+}
 
 const username = process.env.ARANGODB_USERNAME
 const password = process.env.ARANGODB_PASSWORD

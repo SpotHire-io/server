@@ -1,12 +1,8 @@
-import React from 'react'
-import ReactDOM from 'react-dom/server'
-import express from 'express'
-import jwtMiddleware from 'express-jwt'
-import path from 'path'
-import App from './App'
-import template from './template'
-import graphqlHTTP from 'express-graphql'
-import schema from './schema'
+const express = require('express')
+const graphqlHTTP = require('express-graphql')
+const jwtMiddleware = require('express-jwt')
+const path = require('path')
+const schema = require('./schema').default
 
 const Server = (db, secret) => {
   const server = express()
@@ -33,16 +29,10 @@ const Server = (db, secret) => {
         },
         graphiql: true,
       }
-    })
+    }),
   )
-
-  server.get('/', (req, res, next) => {
-    const body = ReactDOM.renderToString(<App />)
-    const html = template(body)
-    res.send(html)
-  })
 
   return server
 }
 
-export default Server
+module.exports.default = Server

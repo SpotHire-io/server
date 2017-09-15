@@ -541,4 +541,4 @@ const people = [
   }
 ]
 
-export default people
+module.exports.default = people

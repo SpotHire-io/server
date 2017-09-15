@@ -1,5 +1,5 @@
-import { Database } from 'arangojs'
-import Connection from '../src/database'
+const { Database } = require('arangojs')
+const Connection = require('../src/database').default
 
 // About the ugliness:
 // Since Jest runs tests in parallel, each file needs to create it's own db,

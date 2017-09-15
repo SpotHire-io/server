@@ -1,11 +1,18 @@
-import request from 'supertest'
-import graphqlHTTP from 'express-graphql'
-import jwt from 'jsonwebtoken'
-import { Database } from 'arangojs'
-import Connection from '../src/database'
-import Server from '../src/server'
-import people from './data/people'
-import { getFilenameFromPath, dbNameFromFile } from './helpers'
+const request = require('supertest')
+const graphqlHTTP = require('express-graphql')
+const jwt = require('jsonwebtoken')
+const { Database } = require('arangojs')
+const Connection = require('../src/database').default
+const Server = require('../src/server').default
+const people = require('./data/people').default
+
+const getFilenameFromPath = function(path) {
+  return path.split('/').slice(-1).join()
+}
+
+const dbNameFromFile = function(filename) {
+  return getFilenameFromPath(filename).replace(/\./g, '_') + '_' + Date.now()
+}
 
 const username = process.env.ARANGODB_USERNAME
 const password = process.env.ARANGODB_PASSWORD
@@ -35,9 +42,9 @@ describe('GraphQL API', () => {
         new Database({
           databaseName: dbname,
           url,
-        })
+        }),
       ),
-      secret
+      secret,
     )
   })
 
@@ -88,9 +95,13 @@ describe('GraphQL API', () => {
     beforeEach(async () => {
       let [person, ..._] = people
       annie = person
-      token = jwt.sign({ secret, aud: 'clientid', ...annie }, secret, {
-        expiresIn: 60,
-      })
+      token = jwt.sign(
+        Object.assign({ secret, aud: 'clientid' }, annie),
+        secret,
+        {
+          expiresIn: 60,
+        },
+      )
     })
 
     describe('user(email: "a@b.c")', () => {

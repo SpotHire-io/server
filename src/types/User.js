@@ -1,7 +1,4 @@
-import {
-  GraphQLObjectType,
-  GraphQLString,
-} from 'graphql'
+const { GraphQLObjectType, GraphQLString } = require('graphql')
 
 const User = new GraphQLObjectType({
   name: 'User',
@@ -9,29 +6,29 @@ const User = new GraphQLObjectType({
   fields: () => ({
     email: {
       type: GraphQLString,
-      description: 'the users email'
+      description: 'the users email',
     },
     lastName: {
       type: GraphQLString,
-      description: 'the users family name'
+      description: 'the users family name',
     },
     firstName: {
       type: GraphQLString,
-      description: 'the users given name'
+      description: 'the users given name',
     },
     phone: {
       type: GraphQLString,
-      description: 'the users phone number'
+      description: 'the users phone number',
     },
     emergencyContactInformation: {
       type: GraphQLString,
-      description: 'the users phone number'
+      description: 'the users phone number',
     },
     imageSrc: {
       type: GraphQLString,
-      description: 'the users phone number'
+      description: 'the users phone number',
     },
-  })
+  }),
 })
 
-export default User
+module.exports.default = User

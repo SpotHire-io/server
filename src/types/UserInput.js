@@ -1,11 +1,11 @@
-import {
+const {
   GraphQLList,
   GraphQLNonNull,
   GraphQLInputObjectType,
   GraphQLString,
-} from 'graphql'
+} = require('graphql')
 
-import { GraphQLEmail, GraphQLURL } from 'graphql-custom-types'
+const { GraphQLEmail, GraphQLURL } = require('graphql-custom-types')
 
 let UserInput = new GraphQLInputObjectType({
   name: 'UserInput',
@@ -31,4 +31,4 @@ let UserInput = new GraphQLInputObjectType({
   }),
 })
 
-export default UserInput
+module.exports.default = UserInput

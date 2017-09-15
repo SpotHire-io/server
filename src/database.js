@@ -1,4 +1,4 @@
-import { aql, Database } from 'arangojs'
+const { aql } = require('arangojs')
 
 const Connection = connection => {
   return {
@@ -24,4 +24,4 @@ const Connection = connection => {
   }
 }
 
-export default Connection
+module.exports.default = Connection

@@ -1,5 +1,5 @@
-import request from 'supertest'
-import Server from '../src/server'
+const request = require('supertest')
+const Server = require('../src/server').default
 
 let userMock = jest
   .fn()
@@ -11,15 +11,10 @@ const server = Server(
   {
     getUserByEmail: userMock,
   },
-  secret
+  secret,
 )
 
 describe('Server', () => {
-  it('serves the / route', async () => {
-    let response = await request(server).get('/')
-    expect(response.status).toEqual(200)
-  })
-
   it("serves a 404 for routes that don't exist", async () => {
     let response = await request(server).get('/asdf')
     expect(response.status).toEqual(404)

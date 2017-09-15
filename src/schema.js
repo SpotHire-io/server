@@ -1,15 +1,11 @@
-import {
+const {
   GraphQLSchema,
   GraphQLObjectType,
   GraphQLString,
-  GraphQLList,
-  GraphQLID,
-  GraphQLFloat,
-  GraphQLInt,
   GraphQLNonNull,
-} from 'graphql'
-import User from './types/User'
-import UserInput from './types/UserInput'
+} = require('graphql')
+const User = require('./types/User').default
+const UserInput = require('./types/UserInput').default
 
 const authenticate = resolver => (source, args, context, info) => {
   if (context.user) {
@@ -51,4 +47,4 @@ var query = new GraphQLObjectType({
   },
 })
 
-export default new GraphQLSchema({ query, mutation })
+module.exports.default = new GraphQLSchema({ query, mutation })

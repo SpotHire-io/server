@@ -1,6 +1,6 @@
-import { Database } from 'arangojs'
-import Connection from './src/database'
-import Server from './src/server'
+const { Database } = require('arangojs')
+const Connection = require('./src/database').default
+const Server = require('./src/server').default
 
 const username = process.env.ARANGODB_USERNAME
 const password = process.env.ARANGODB_PASSWORD
