@@ -1,5 +1,4 @@
 const {
-  GraphQLList,
   GraphQLNonNull,
   GraphQLInputObjectType,
   GraphQLString,

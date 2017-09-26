@@ -1,7 +1,6 @@
 const express = require('express')
 const graphqlHTTP = require('express-graphql')
 const jwtMiddleware = require('express-jwt')
-const path = require('path')
 const schema = require('./schema').default
 
 const Server = (db, secret) => {
