@@ -1,0 +1,59 @@
+{
+  "name": "spothire_frontend",
+  "version": "0.0.1",
+  "description": "The frontend for Spothire",
+  "main": "index.js",
+  "author": "Mike Williamson",
+  "license": "MIT",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "webpack-dev-server --port=3001",
+    "extract": "node node_modules/lingui-cli/dist/lingui-extract.js",
+    "compile": "node node_modules/lingui-cli/dist/lingui-compile.js",
+    "test": "jest",
+    "build": "webpack",
+    "lint": "./node_modules/eslint/bin/eslint.js src/**"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-eslint": "8",
+    "babel-loader": "^7.1.2",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-export-extensions": "^6.22.0",
+    "babel-plugin-transform-function-bind": "^6.22.0",
+    "babel-preset-env": "^1.6.0",
+    "babel-preset-react": "^6.24.1",
+    "enzyme": "^2.9.1",
+    "enzyme-to-json": "^2.0.0",
+    "eslint": "^4.7.1",
+    "eslint-config-prettier": "^2.5.0",
+    "eslint-config-standard": "^10.2.1",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-jest": "^21.1.0",
+    "eslint-plugin-node": "^5.1.1",
+    "eslint-plugin-promise": "^3.5.0",
+    "eslint-plugin-react": "^7.3.0",
+    "eslint-plugin-standard": "^3.0.1",
+    "html-webpack-plugin": "^2.30.1",
+    "html-webpack-template": "^5.6.0",
+    "jest": "^21.1.0",
+    "jest-styled-components": "^4.6.0",
+    "react-test-renderer": "^15.6.1",
+    "webpack": "^3.6.0",
+    "webpack-dev-server": "^2.8.2"
+  },
+  "dependencies": {
+    "express": "^4.15.4",
+    "prop-types": "^15.5.10",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
+    "styled-components": "^2.1.2"
+  },
+  "jest": {
+    "verbose": true,
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ]
+  }
+}
