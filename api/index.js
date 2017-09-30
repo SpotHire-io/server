@@ -15,4 +15,4 @@ const db = Connection(
 
 const server = Server(db, sharedSecret)
 
-server.listen(3000)
+server.listen(3001)
