@@ -1,4 +1,4 @@
-FROM node:8.1-alpine
+FROM node:8.5-alpine
 MAINTAINER Mike Williamson <mike@korora.ca>
 
 WORKDIR /app
