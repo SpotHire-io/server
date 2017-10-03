@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { render } from 'react-dom'
 import Logo from './components/Logo'
+import MenuBar from './components/MenuBar'
 import { css, injectGlobal } from 'emotion'
 
 injectGlobal`
@@ -19,10 +20,13 @@ const mainstyle = css`
   height: 100%;
 `
 
+
 class App extends Component {
   render() {
     return (
       <main className={mainstyle}>
+        <MenuBar />
+        <br />
         <Logo width="40em" />
         <h2 className={white}>Coming soon.</h2>
       </main>
