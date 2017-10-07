@@ -26,10 +26,10 @@ const Link = styled('a')`
     transition: color 0.15s ease-in;
   }
   cursor: pointer;
-  &:hover{
-    opacity: .5;
+  &:hover {
+    box-shadow: inset 0 0 20px 2px rgba(0, 0, 0, 0.2);
+    opacity: 0.5;
   }
-
 `
 
 export default Link
