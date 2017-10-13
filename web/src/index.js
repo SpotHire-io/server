@@ -4,7 +4,6 @@ import Logo from './components/Logo'
 import MenuBar from './components/MenuBar'
 import { css, injectGlobal } from 'emotion'
 import { white, bgTeal } from './styles'
-import Box from './components/Box'
 
 injectGlobal`
 
