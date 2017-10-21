@@ -3,7 +3,9 @@ import { render } from 'react-dom'
 import Logo from './components/Logo'
 import MenuBar from './components/MenuBar'
 import { css, injectGlobal } from 'emotion'
-import { white, bgTeal } from './styles'
+
+export const white = css`color: #fff;`
+export const bgTeal = css`background-color: #5ab6b2;`
 
 injectGlobal`
 
