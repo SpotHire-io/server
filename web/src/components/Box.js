@@ -1,24 +1,30 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { css } from 'emotion'
-import {
-  bw1,
-  mt0,
-  ttu,
-  f5,
-  f6,
-  ma0,
-  pa3,
-  lhTitle,
-  bWhite40,
-  bgTeal,
-  white,
-  bb,
-  ba,
-  bgWhite,
-  bBlack20,
-  shShadow2,
-} from '../styles'
+
+const f6 = css`font-size: 6rem;`
+const bw1 = css`border-width: 0.125rem;`
+const mt0 = css`margin-top: 0;`
+const ttu = css`text-transform: uppercase;`
+const f5 = css`font-size: 1rem;`
+const ma0 = css`margin: 0;`
+const pa3 = css`padding: 1rem;`
+const lhTitle = css`line-height: 1.25;`
+const bWhite40 = css`border-color: rgba(255, 255, 255, 0.4);`
+const bgTeal = css`background-color: #5ab6b2;`
+const white = css`color: #fff;`
+const bb = css`
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+`
+const ba = css`
+  border-style: solid;
+  border-width: 1px;
+`
+const bgWhite = css`background-color: #fff;`
+const bBlack20 = css`border-color: rgba(0, 0, 0, 0.2);`
+const shShadow2 = css`box-shadow: 0px 3px 10px -4px rgba(0, 0, 0, 0.2);`
+
 
 /**
  * Standard UI container. Most content and interfaces should be wrapped in a Box.
