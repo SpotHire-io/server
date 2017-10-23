@@ -100,4 +100,13 @@ Box.defaultProps = {
   contentWrapperClassName: css`${pa3}`,
 }
 
+Box.propTypes = {
+  children: PropTypes.string,
+  className: PropTypes.string,
+  contentWrapperClassName: PropTypes.string,
+  headingSemanticLevel: PropTypes.number,
+  headingType: PropTypes.string,
+  title: PropTypes.string,
+}
+
 export default Box
