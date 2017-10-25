@@ -85,6 +85,7 @@ const itemStyles = css`
   ${noUnderline};
   ${animateAll};
   ${bb};
+  ${bTeal};
   ${bw1};
   ${hoverBWhite40};
   ${props => (props.active ? activeStyles : css``)};
