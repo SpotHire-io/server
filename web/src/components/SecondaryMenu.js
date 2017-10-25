@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { css } from 'emotion'
 
+// XXX: Clean this up.
 const bgWhite = css`
   background-color: #fff;
 `
@@ -73,7 +74,8 @@ const activeStyles = css`
   ${bWhite40};
 `
 
-const styles = css`
+const itemStyles = css`
+  margin-bottom: -0.125rem;
   ${b};
   ${nearBlack};
   ${hoverGray};
@@ -88,46 +90,27 @@ const styles = css`
   ${props => (props.active ? activeStyles : css``)};
 `
 
-/**
- * Secondary section menu.
- *
- * Provides navigation for a given section.
- */
-export default class SecondaryMenu extends React.Component {
-  renderNavItem = (item, index) => {
-    return (
-      <a
-        key={item + index}
-        onClick={() => this.props.onClick(item.key)}
-        href={item.href}
-        className={styles}
-        style={{ marginBottom: '-0.125rem' }}>
-        {item.text}
-      </a>
-    )
-  }
+const wrapperClasses = css`
+  ${bb};
+  ${bgWhite};
+  ${bw1};
+  ${bTeal};
+`
 
-  render() {
-    const wrapperClasses = css`
-      ${bb};
-      ${bgWhite};
-      ${bw1};
-      ${bTeal};
-      ${props => (props.className ? props.classNames : css``)};
-    `
+const SecondaryMenu = ({ children }) => (
+  <nav className={wrapperClasses}>
+    {React.Children.map(children, (item, index) => {
+      return React.cloneElement(item, { className: itemStyles })
+    })}
+  </nav>
+)
 
-    return (
-      <nav className={wrapperClasses}>
-        {this.props.items.map((item, index) => this.renderNavItem(item, index))}
-      </nav>
-    )
-  }
-}
 SecondaryMenu.defaultProps = {
   className: secondaryMenuStyles,
 }
 
 SecondaryMenu.propTypes = {
-  onClick: PropTypes.func,
-  items: PropTypes.array,
+  children: PropTypes.array,
 }
+
+export default SecondaryMenu
