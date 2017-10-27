@@ -2,17 +2,39 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { css } from 'emotion'
 
-const f6 = css`font-size: 6rem;`
-const bw1 = css`border-width: 0.125rem;`
-const mt0 = css`margin-top: 0;`
-const ttu = css`text-transform: uppercase;`
-const f5 = css`font-size: 1rem;`
-const ma0 = css`margin: 0;`
-const pa3 = css`padding: 1rem;`
-const lhTitle = css`line-height: 1.25;`
-const bWhite40 = css`border-color: rgba(255, 255, 255, 0.4);`
-const bgTeal = css`background-color: #5ab6b2;`
-const white = css`color: #fff;`
+const f6 = css`
+  font-size: 6rem;
+`
+const bw1 = css`
+  border-width: 0.125rem;
+`
+const mt0 = css`
+  margin-top: 0;
+`
+const ttu = css`
+  text-transform: uppercase;
+`
+const f5 = css`
+  font-size: 1rem;
+`
+const ma0 = css`
+  margin: 0;
+`
+const pa3 = css`
+  padding: 1rem;
+`
+const lhTitle = css`
+  line-height: 1.25;
+`
+const bWhite40 = css`
+  border-color: rgba(255, 255, 255, 0.4);
+`
+const bgTeal = css`
+  background-color: #5ab6b2;
+`
+const white = css`
+  color: #fff;
+`
 const bb = css`
   border-bottom-style: solid;
   border-bottom-width: 1px;
@@ -21,10 +43,15 @@ const ba = css`
   border-style: solid;
   border-width: 1px;
 `
-const bgWhite = css`background-color: #fff;`
-const bBlack20 = css`border-color: rgba(0, 0, 0, 0.2);`
-const shShadow2 = css`box-shadow: 0px 3px 10px -4px rgba(0, 0, 0, 0.2);`
-
+const bgWhite = css`
+  background-color: #fff;
+`
+const bBlack20 = css`
+  border-color: rgba(0, 0, 0, 0.2);
+`
+const shShadow2 = css`
+  box-shadow: 0px 3px 10px -4px rgba(0, 0, 0, 0.2);
+`
 
 /**
  * Standard UI container. Most content and interfaces should be wrapped in a Box.
@@ -64,18 +91,14 @@ const Box = ({
                 ${pa3};
                 ${f5};
               `
-            : css`
-
-              `} ${headingType === 'inline'
+            : css``} ${headingType === 'inline'
               ? css`
                   ${f6};
                   ${mt0};
                   ${lhTitle};
                   ${ttu};
                 `
-              : css`
-
-                `};
+              : css``};
         `,
         title,
       })
@@ -97,11 +120,16 @@ Box.defaultProps = {
   className: '',
   headingSemanticLevel: 2,
   headingType: 'block',
-  contentWrapperClassName: css`${pa3}`,
+  contentWrapperClassName: css`
+    ${pa3};
+  `,
 }
 
 Box.propTypes = {
-  children: PropTypes.string,
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node,
+  ]),
   className: PropTypes.string,
   contentWrapperClassName: PropTypes.string,
   headingSemanticLevel: PropTypes.number,
