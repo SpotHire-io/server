@@ -92,6 +92,8 @@ const itemStyles = css`
 `
 
 const wrapperClasses = css`
+  text-align: left;
+  padding-left: 3em;
   ${bb};
   ${bgWhite};
   ${bw1};
