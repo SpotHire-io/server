@@ -43,12 +43,17 @@
     "webpack-dev-server": "^2.8.2"
   },
   "dependencies": {
+    "@kadira/storybook": "^2.35.3",
     "emotion": "^7.3.2",
     "express": "^4.15.4",
+    "moment": "^2.19.1",
     "prop-types": "^15.5.10",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
-    "react-emotion": "^7.3.2"
+    "react-emotion": "^7.3.2",
+    "react-geomicons": "^2.1.0",
+    "react-modal": "^3.1.0",
+    "reactable": "^0.14.1"
   },
   "jest": {
     "verbose": true,
