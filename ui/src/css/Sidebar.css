@@ -1,0 +1,62 @@
+.logo {
+  padding-left: 2rem;
+  padding-right: 2rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.sidebar {
+  background-color: #5ab6b2;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  align-items: center;
+  box-shadow: 2px 2px 8px 0 rgba(0, 0, 0, 0.2);
+  border-width: 0.125rem;
+  border-color: hsla(0, 0%, 100%, 0.4);
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-top-style: solid;
+}
+
+h2 {
+  font-size: 11px;
+  color: #646464;
+  font-weight: normal;
+  margin-top: 0px;
+  text-shadow: 1px 1px 1px #2d2d2d;
+  -webkit-font-smoothing: antialiased;
+}
+
+.sidebar a,
+.sidebar span {
+  padding:1.2em;
+  margin: 0;
+  width: 20%;
+  text-decoration: none;
+  color: white;
+  text-align: center;
+  cursor: pointer;
+  font-family: sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.sidebar .active {
+  transition: 0s ease all;
+  font-style: italic;
+  box-shadow: inset 0 0 20px 2px rgba(0, 0, 0, 0.2);
+  margin: 0;
+}
+
+.sidebar a:hover,
+.sidebar span:hover {
+  opacity: 0.5;
+}
+
+.sidebar .active a:hover,
+.sidebar .span span:hover {
+}
+
+.sidebar .active:hover {
+  box-shadow: inset 0 0 20px 2px rgba(0, 0, 0, 0.2);
+}
