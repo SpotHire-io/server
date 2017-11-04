@@ -7,17 +7,17 @@ services:
       - "80:80"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-  web:
+  ui:
     ports:
       - "3000"
     build:
-      context: ./web
+      context: ./ui
       dockerfile: Dockerfile
     volumes:
-      - ./web:/app
-    command: yarn proxied_dev
+      - ./ui:/app
+    command: yarn start
     labels:
-      - "traefik.backend=web"
+      - "traefik.backend=ui"
       - "traefik.frontend.rule=PathPrefix:/"
       - "traefik.port=3000"
       - "traefik.enable=true"
