@@ -1,3 +1,4 @@
+import 'isomorphic-fetch'
 import React from 'react'
 import ReactDOM from 'react-dom/server'
 import { Provider } from 'react-redux'
@@ -35,7 +36,7 @@ export default ({ clientStats }) => async (req, res, next) => {
           <script type='text/javascript' src='/static/vendor.js'></script>
           ${js}
         </body>
-      </html>`
+      </html>`,
   )
 }
 
