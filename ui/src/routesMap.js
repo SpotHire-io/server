@@ -14,15 +14,15 @@ export default {
       if (packages.length === 0) {
         const action = redirect({
           type: 'LIST',
-          payload: { category: 'redux' }
+          payload: { category: 'redux' },
         })
 
         return dispatch(action)
       }
 
       dispatch({ type: 'PACKAGES_FETCHED', payload: { category, packages } })
-    }
-  }
+    },
+  },
 }
 
 // this is essentially faking/mocking the fetch api
@@ -38,7 +38,7 @@ const fetch = async path => {
       return [
         'react-router',
         'react-transition-group',
-        'react-universal-component'
+        'react-universal-component',
       ]
     default:
       return []
