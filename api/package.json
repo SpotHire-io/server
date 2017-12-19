@@ -8,7 +8,7 @@
   "scripts": {
     "test": "jest",
     "start": "node index.js",
-    "lint": "./node_modules/eslint/bin/eslint.js src/**"
+    "lint": "eslint src/**"
   },
   "devDependencies": {
     "jest": "^21.1.0",
