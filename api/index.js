@@ -4,7 +4,7 @@ const Server = require('./src/server').default
 
 const username = process.env.ARANGODB_USERNAME
 const password = process.env.ARANGODB_PASSWORD
-const sharedSecret = process.env.SPOTHIRE_SHARED_SECRET
+const sharedSecret = process.env.SPOTHIRE_AUTH0_CLIENT_SECRET
 
 const db = Connection(
   new Database({

@@ -1,7 +1,7 @@
 version: '2'
 services:
   proxy:
-    image: traefik
+    image: traefik:1.5
     command: --docker --docker.domain=docker.localhost --logLevel=DEBUG --defaultentrypoints="Name:http Address::80"
     ports:
       - "80:80"
@@ -15,6 +15,7 @@ services:
       dockerfile: Dockerfile
     volumes:
       - ./ui:/app
+    working_dir: /app
     command: yarn start
     labels:
       - "traefik.backend=ui"
@@ -25,7 +26,7 @@ services:
     environment:
       - ARANGODB_PASSWORD
       - ARANGODB_USERNAME
-      - SPOTHIRE_SHARED_SECRET
+      - SPOTHIRE_AUTH0_CLIENT_SECRET
     ports:
       - "3001"
     links:
@@ -44,7 +45,7 @@ services:
   arangodb:
     environment:
       - ARANGO_ROOT_PASSWORD
-    image: arangodb/arangodb:3.2.4
+    image: arangodb/arangodb:3.2.9
     volumes:
       - data:/var/lib/arangodb3
     ports:

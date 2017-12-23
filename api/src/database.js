@@ -12,6 +12,7 @@ const Connection = connection => {
       return results.next()
     },
     saveUser: async user => {
+      console.log('db info: ', await connection.get())
       let query = aql`
         UPSERT {email: ${user.email} }
           INSERT ${user}
